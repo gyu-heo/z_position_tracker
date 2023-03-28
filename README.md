@@ -24,3 +24,10 @@ This function tracks the z position of the 2p imaging plane frame by frame, usin
 - You can change the slurm output directory by entering: sbatch --output=YOUR_SLURM_OUT_DIR /n/data1/hms/neurobio/sabatini/gyu/github_clone/z_position_tracker/cmd_z_tracking.sh
 - You can also input directories in the command-line input. The command-line input will overwrite the params.yml input.
   - Example: sbatch /n/data1/hms/neurobio/sabatini/gyu/github_clone/z_position_tracker/cmd_z_tracking.sh --dir-video-exp /n/data1/hms/neurobio/sabatini/gyu/github_clone/z_position_tracker/tester/exp
+
+# Unresolved Error
+- There seems like an unexpected / unresolved error with ScanImageTiffReader when it is called on non-interactive slurm node.
+  - Quick-and-dirty makeshift: Comment out Line 309-310 of __init__.py in ScanImageTiffReader
+  - Comment-out Lines:
+    - if self.__ctx.log:
+    - raise Exception(self.__ctx.log.decode("utf-8","strict"))
