@@ -1,0 +1,30 @@
+paths:
+  dir_video_exp: /n/data1/hms/neurobio/sabatini/gyu/github_clone/z_position_tracker/tester/exp
+  path_video_stack: /n/data1/hms/neurobio/sabatini/gyu/github_clone/z_position_tracker/tester/stack/zstack_815_00001_00001.tif
+  dir_save: /n/data1/hms/neurobio/sabatini/gyu/github_clone/z_position_tracker/tester/save
+import_tiff:
+  downsample_factors: [1,1,1]
+  clip_zero: True
+  verbose: True
+dense_to_sparse:
+  inherit_metadata: False
+  kwargs:
+    num_frames_per_slice: 60   # Only matters when inherit_metadata is False
+    num_slices: 25   # Only matters when inherit_metadata is False
+    num_volumes: 10   # Only matters when inherit_metadata is False
+    step_size_um: 0.8   # Only matters when inherit_metadata is False
+    frames_to_discard_per_slice: 30
+    sparse_step_size_um: 0.8
+    verbose: True
+z_tracking:
+  files_per_job: -1   # -1 submits a job per each tiff file. n (type:int) submits jobs, each tracks n tiff files. 0 submits 1 job only, tracks every tiff files.
+  kwargs:
+    clip_zero: True
+    downsample_factors: [1,1,1]
+    bandpass_spatialFs_bounds: [0.02, 0.3]   # List works; If not, will be casted as tuple in main code
+    order_butter: 5
+    use_GPU: True
+    batch_size: 70
+    resample_factor: 100
+    sig: 4.0
+    verbose: True
