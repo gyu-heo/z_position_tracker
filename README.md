@@ -26,7 +26,7 @@ This function tracks the z position of the 2p imaging plane frame by frame, usin
   - Example: sbatch /n/data1/hms/neurobio/sabatini/gyu/github_clone/z_position_tracker/cmd_z_tracking.sh --dir-video-exp /n/data1/hms/neurobio/sabatini/gyu/github_clone/z_position_tracker/tester/exp
 
 # Unresolved Error
-- There seems like an unexpected / unresolved error with ScanImageTiffReader when it is called on non-interactive slurm node.
+- There seems to be an unexpected / unresolved error with ScanImageTiffReader when it is called on non-interactive slurm node.
   - Quick-and-dirty makeshift: Comment out Line 309-310 of __init__.py in ScanImageTiffReader
   - Comment-out Lines:
     - if self.__ctx.log:
